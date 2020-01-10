@@ -1,0 +1,17 @@
+package ejerciciosAmpliación;
+
+public class Ejercicio8 {
+
+	public static void main(String[] args) {
+		int suma = 0;
+		int producto = 1;
+		
+		for(int i = 1; i <= 7; i++) {
+			suma += i;
+			producto *= i;
+		}
+		
+		System.out.println("Suma: " + suma);
+		System.out.println("Producto " + producto);
+	}
+}
