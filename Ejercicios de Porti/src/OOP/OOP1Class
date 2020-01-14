@@ -1,0 +1,53 @@
+package OOP;
+
+public class Cuenta{
+    //Atributos
+    String titular;
+    int cantidad;
+    //Constructores
+    public Cuenta(String titular){
+
+        this.titular = titular;
+
+    }
+
+    public Cuenta(String titular, int cantidad){
+        this.titular = cantidad;
+        this.cantidad = cantidad;
+
+    }
+
+    //Getters
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    //Setters
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    //Métodos de la clase
+
+    Cuenta ingresar(){
+
+
+
+    }
+
+    Cuenta retirar(){
+
+        
+    }
+
+}
