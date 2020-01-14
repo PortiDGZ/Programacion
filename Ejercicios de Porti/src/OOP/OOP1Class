@@ -39,15 +39,15 @@ public class Cuenta{
 
     //Métodos de la clase
 
-    Cuenta ingresar(){
+    Cuenta ingresar(double cantidad){
 
 
 
     }
 
-    Cuenta retirar(){
+    Cuenta retirar(double cantidad){
 
-        
+
     }
 
 }
