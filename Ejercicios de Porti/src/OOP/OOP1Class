@@ -39,14 +39,22 @@ public class Cuenta{
 
     //Métodos de la clase
 
-    Cuenta ingresar(double cantidad){
+    void ingresar(double cantidad){
 
-
-
+        if (cantidad > 0) {
+            this.cantidad += cantidad;
+        }
     }
 
-    Cuenta retirar(double cantidad){
+    void retirar(double cantidad){
 
+        this.cantidad -= cantidad;
+
+        if (this.cantidad < 0){
+
+            this.cantidad = 0;
+
+        }
 
     }
 
