@@ -47,10 +47,10 @@ public class TicTacToe {
                 continue;
             }
         }
-        if (ganador.equalsIgnoreCase("draw")) {
-            System.out.println("It's a draw! Thanks for playing.");
+        if (ganador.equalsIgnoreCase("empate")) {
+            System.out.println("Casilla inválida, introduce una casilla válida.");
         } else {
-            System.out.println("Congratulations! " + ganador + "'s have won! Thanks for playing.");
+            System.out.println("¡Enhorabuena " + ganador + " ha ganado! Gracias por jugar.");
         }
     }
 
@@ -94,10 +94,10 @@ public class TicTacToe {
             if (Arrays.asList(tablero).contains(String.valueOf(a+1))) {
                 break;
             }
-            else if (a == 8) return "draw";
+            else if (a == 8) return "empate";
         }
 
-        System.out.println(turno + "'s turn; enter a slot number to place " + turno + " in:");
+        System.out.println(turno + " introduce una casilla " + turno + " en:");
         return null;
     }
 
