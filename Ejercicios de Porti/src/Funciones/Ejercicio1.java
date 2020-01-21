@@ -1,4 +1,4 @@
-package Ejercicio6;
+package Funciones;
 
 public class Ejercicio1 {
 
