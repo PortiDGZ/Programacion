@@ -1,25 +1,25 @@
-package arraysUnidimensionales;
+package Arrays;
 
-public class Ejercicio9 {
+public class Arrays9 {
 
 	public static void main(String[] args) {
-		int[] tabla = new int[10];
+		int[] matriz = new int[10];
 		
-		Ejercicio5.rellenarPorTeclado(tabla);
-		
-		System.out.println();
-		
-		printIndices(tabla);
-		
-		Ejercicio1.print(tabla);
-		
-		segregarPrimosCompuestos(tabla);
+		Arrays5.rellenarPorTeclado(matriz);
 		
 		System.out.println();
 		
-		printIndices(tabla);
+		printIndices(matriz);
 		
-		Ejercicio1.print(tabla);
+		Ejercicio1.print(matriz);
+		
+		segregarPrimosCompuestos(matriz);
+		
+		System.out.println();
+		
+		printIndices(matriz);
+		
+		Arrays1.print(matriz);
 	}
 
 	private static void printIndices(int[] tabla) {

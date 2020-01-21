@@ -1,6 +1,6 @@
-package arraysBidimensionales;
+package Arrays;
 
-public class Ejercicio6 {
+public class ArrayBi6 {
 
 	public static void main(String[] args) {
 		int[][] tabla = new int[12][12];

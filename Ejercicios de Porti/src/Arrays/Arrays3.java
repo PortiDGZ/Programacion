@@ -2,27 +2,48 @@ import java.util.Scanner;
 
 public class Arrays3 {
 
-    public static void main(String[] args){
+    static Scanner scan = new Scanner(System.in);
 
-        int[] num = new int[10];
+    public static void main(String[] args) {
+        int[] tabla = new int[10];
 
-        int numA;
+        rellenar(tabla);
 
-        int i;
+        System.out.println();
 
-        Scanner entrada = new Scanner((System.in));
+        Ejercicio1.print(tabla);
 
-        for (i = 0; i < num[i]; i++){
-
-            num[i] = entrada.nextInt();
-
-        }
-
-        for (i = num[i]; i >= num[i]; i--){
-
-            System.out.println(num[i]);
-
-        }
-
+        scan.close();
     }
+
+    public static void rellenar(int[] tabla) {
+        for(int i = tabla.length - 1; i >= 0; i--) {
+            tabla[i] = pedirInt();
+        }
+    }
+
+    public static int pedirInt() {
+        System.out.print("Introduce un n�mero entero: ");
+
+        return leerInt();
+    }
+
+    public static int leerInt() {
+        String next = scan.next();
+
+        while(!isInt(next)) {
+            System.out.print("El n�mero no se ha introducido correctamente. Intentelo de nuevo: ");
+            next = scan.next();
+        }
+
+        return  Integer.parseInt(next);
+    }
+
+    public static boolean isInt(String s) {
+        try
+        { Integer.parseInt(s); return true; }
+        catch(NumberFormatException er)
+        { return false; }
+    }
+
 }

@@ -1,19 +1,19 @@
-package arraysBidimensionales;
+package Arrays;
 
-public class Ejercicio5 {
+public class ArrayBi5 {
 
 	public static void main(String[] args) {
 		int[][] tabla = new int[6][10];
 
 		rellenar(tabla);
 
-		Ejercicio1.print(tabla);
+		ArrayBi1.print(tabla);
 		System.out.println();
 
-		System.out.println("Posición del mínimo: " + posMin(tabla));
+		System.out.println("Posiciï¿½n del mï¿½nimo: " + posMin(tabla));
 		System.out.println();
 
-		System.out.println("Posición del máximo: " + posMax(tabla));
+		System.out.println("Posiciï¿½n del mï¿½ximo: " + posMax(tabla));
 		System.out.println();
 	}
 

@@ -2,42 +2,70 @@ package Arrays;
 
 import java.util.Scanner;
 
-public class ArrayBi2 {
+public class ArraysBi2 {
 
-    public static void main(String[] args){
+	static Scanner scan = new Scanner(System.in);
 
-    int[][] paco;
+	public static void main(String[] args) {
+		int[][] tabla = new int[4][5];
 
-    paco = generarArrayBi();
+		rellenarPorTeclado(tabla);
+		
+		System.out.println();
 
-    
+		printSumatorio(tabla);
 
-    }
+		scan.close();
+	}
 
-    public static int[][] generarArrayBi(){
+	public static void rellenarPorTeclado(int[][] tabla) {
+		for (int i = 0; i <= tabla.length - 1; i++) {
+			for (int j = 0; j <= tabla[i].length - 1; j++) {
+				tabla[i][j] = Arrays.Arrays3.pedirInt();
+			}
+		}
+	}
+	
+	public static void printFila(int[] tabla) {
+		for(int i = 0; i <= tabla.length - 1; i++) {
+			System.out.print(tabla[i]);
+			System.out.print(", ");
+		}
+		
+		int total = sumatorio(tabla);
+		
+		System.out.print(total);
+	}
 
-        Scanner entrada = new Scanner(System.in);
+	public static void printSumatorio(int[][] tabla) {
+		for (int i = 0; i <= tabla.length - 1; i++) {
+			printFila(tabla[i]);
+			System.out.println();
+		}
+		
+		printSumatorioColumnas(tabla);
+	}
 
-        System.out.print("¿De que tamaño quieres el array?: ");
+	public static void printSumatorioColumnas(int[][] tabla) {
+		int[] columnas = new int[tabla[0].length];
+		
+		for (int i = 0; i <= tabla.length - 1; i++) {
+			for (int j = 0; j <= tabla[i].length - 1; j++) {
+				columnas[j] += tabla[i][j];
+			}
+		}
+		
+		printFila(columnas);
+	}
 
-        int filas = entrada.nextInt();
+	public static int sumatorio(int[] tabla) {
+		int total = 0;
+		
+		for (int elem : tabla) {
+			total += elem;
+		}
+		
+		return total;
+	}
 
-        int columnas = entrada.nextInt();
-
-        return new int[filas][columnas];
-
-    }
-
-    public static void rellenarmatriz(int[][] jose){
-
-        Scanner entrada = new Scanner(System.in);
-        for (int i = 0; i <= jose.length - 1; i++){
-            for (int j = 0; j <= jose.length -1; j++){
-
-                jose[i][j] = entrada.nextInt();
-
-
-            }
-        }
-    }
 }

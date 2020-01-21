@@ -2,14 +2,14 @@ package arraysUnidimensionales;
 
 import java.util.Scanner;
 
-public class Ejercicio10 {
+public class Arrays10 {
 
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		char continuar = 's';
 		
-		System.out.print("Número de mesas: ");
+		System.out.print("NÃºmero de mesas: ");
 		int[] mesas = new int[Ejercicio3.leerInt()];
 		rellenarRandom(mesas);
 		System.out.println();
@@ -21,7 +21,7 @@ public class Ejercicio10 {
 			colocar(personas, mesa, mesas);
 			printMesas(mesas);
 			
-			System.out.print("¿Desea continuar? (s/n) ");
+			System.out.print("ï¿½Desea continuar? (s/n) ");
 			continuar = scan.next().charAt(0);
 			System.out.println();
 		} while (continuar != 'n');
@@ -51,18 +51,18 @@ public class Ejercicio10 {
 		int personas = -1;
 		
 		do {
-			System.out.print("Número de personas: ");
-			personas = Ejercicio3.leerInt();
+			System.out.print("Nï¿½mero de personas: ");
+			personas = Arrays3.leerInt();
 			System.out.println();
 			
 			proceder = personas <= 4 && personas >= 1;
 
 			if (!proceder) {
 				if (personas > 4) {
-					System.out.println("Lo siento, no admitimos grupos de " + personas + ", haga grupos de 4 personas como máximo e intente de nuevo.");
+					System.out.println("Lo siento, no admitimos grupos de " + personas + ", haga grupos de 4 personas como mï¿½ximo e intente de nuevo.");
 					System.out.println();
 				} else {
-					System.out.println("El número de personas especificado no es válido.");
+					System.out.println("El nï¿½mero de personas especificado no es vï¿½lido.");
 					System.out.println();
 				}
 			} 

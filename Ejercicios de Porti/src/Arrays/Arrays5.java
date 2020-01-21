@@ -4,44 +4,62 @@ public class Arrays5 {
 
     public static void main(String[] args) {
 
-        int[] Numeros = new int[10];
+        int[] tabla = new int[10];
 
+        rellenarPorTeclado(tabla);
+
+        System.out.println();
+
+        mostrarMaximoYMinimo(tabla);
+    }
+
+    public static void mostrarMaximoYMinimo(int[] tabla) {
+        int maximo = maximo(tabla);
+        int minimo = minimo(tabla);
+
+        for(int i = 0; i <= tabla.length - 1; i++) {
+            System.out.print(tabla[i]);
+            if(i == maximo) {
+                System.out.print(" m�ximo");
+            }
+            if(i == minimo) {
+                System.out.print(" m�nimo");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int minimo(int[] tabla) {
+        int min = 0;
+
+        for(int i = 1; i <= tabla.length - 1; i++) {
+            if(tabla[min] > tabla[i]) {
+                min = i;
+            }
+        }
+
+        return min;
+    }
+
+    public static int maximo(int[] tabla) {
         int max = 0;
 
-        int min = 999999999;
-
-        int i;
-
-        Scanner entrada = new Scanner(System.in);
-
-        for (i = 0; i < Numeros.length; i++) {
-
-            Numeros[i] = entrada.nextInt();
-
-        }
-
-        for (i = 0; i < Numeros.length; i++) {
-
-            max = Math.max(max, Numeros[i]);
-
-            min = Math.min(min, Numeros[i]);
-
-        }
-
-        for (i = 0; i < Numeros.length; i++) {
-
-            System.out.println(Numeros[i]);
-            if (Numeros[i] == max) {
-                System.out.print("Maximo ");
+        for(int i = 1; i <= tabla.length - 1; i++) {
+            if(tabla[max] < tabla[i]) {
+                max = i;
             }
-
-            if (Numeros[i] == min) {
-
-                System.out.print("Minimo ");
-            }
-
-
         }
 
+        return max;
     }
+
+
+
+    public static void rellenarPorTeclado(int[] tabla) {
+        for(int i = 0; i <= tabla.length - 1; i++) {
+            tabla[i] = Arrays3.pedirInt();
+        }
+    }
+
 }
+
