@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 
 public class Ejercicio6 extends Application {
 	@Override
@@ -24,11 +25,14 @@ public class Ejercicio6 extends Application {
 		// Rectángulo
 		Polygon rectangulo = new Polygon(0, 0, 50, 0, 50, 150, 0, 150);
 		rectangulo.setFill(Color.BLACK);
-		rectangulo.setTranslateX(450);
+		
+		// Marcador
+		Text marcador = new Text("Puntuación: 0    Máximo: 0");
+		marcador.setStyle("-fx-font: 24 arial;");
 
 		// Crear panel
 		StackPane panel = new StackPane();
-		panel.getChildren().addAll(pelota, rectangulo);
+		panel.getChildren().addAll(pelota, rectangulo, marcador);
 
 		// Crear escena
 		Scene escena = new Scene(panel, 1000, 600);
@@ -37,7 +41,7 @@ public class Ejercicio6 extends Application {
 		primaryStage.show();
 
 		// Movimiento de la pelota
-		Handler6 handler = new Handler6(pelota, escena, rectangulo);
+		Handler6 handler = new Handler6(pelota, escena, rectangulo, marcador);
 		Timeline timelinePelota = new Timeline(new KeyFrame(Duration.millis(16), handler));
 		timelinePelota.setCycleCount(Timeline.INDEFINITE);
 		timelinePelota.play();

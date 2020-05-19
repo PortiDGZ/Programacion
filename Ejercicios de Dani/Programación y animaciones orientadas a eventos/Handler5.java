@@ -11,9 +11,13 @@ public class Handler5 implements EventHandler<ActionEvent> {
 	private Circle pelota;
 	private Scene escena;
 	
-	// Velocidad de movimiento
+	// Velocidad total
 	private int velocidadX = 2;
 	private int velocidadY = 1;
+	
+	// Velocidad de movimiento actual
+	private int velocidadXActual = 2;
+	private int velocidadYActual = 1;
 
 	// Constructor
 	public Handler5(Circle pelota, Scene escena) {
@@ -30,24 +34,55 @@ public class Handler5 implements EventHandler<ActionEvent> {
 		
 		// Cambiar la velocidad cuando deba chocar
 		if(pelota.getTranslateX() >= ancho) {
-			velocidadX = -2;
+			velocidadXActual = - velocidadX;
 		}
 		
 		if(pelota.getTranslateX() <= - ancho) {
-			velocidadX = 2;
+			velocidadXActual = velocidadX;
 		}
 		
 		if(pelota.getTranslateY() >= alto) {
-			velocidadY = -1;
+			velocidadYActual = - velocidadY;
 		}
 		
 		if(pelota.getTranslateY() <= - alto) {
-			velocidadY = 1;
+			velocidadYActual = velocidadY;
 		}
 		
 		// Movimiento de la pelota
-		pelota.setTranslateX(pelota.getTranslateX() + velocidadX);
-		pelota.setTranslateY(pelota.getTranslateY() + velocidadY);
+		pelota.setTranslateX(pelota.getTranslateX() + velocidadXActual);
+		pelota.setTranslateY(pelota.getTranslateY() + velocidadYActual);
+	}
+
+	public void aumentarVelocidad() {
+		velocidadX += 2;
+		velocidadY += 1;
+		
+		actualizarVelocidad();
+	}
+
+	private void actualizarVelocidad() {
+		if (velocidadXActual < 0) {
+			velocidadXActual = - velocidadX;
+		} else {
+			velocidadXActual = velocidadX;
+		}
+		
+		if (velocidadYActual < 0) {
+			velocidadYActual = - velocidadY;
+		} else {
+			velocidadYActual = velocidadY;
+		}
+	}
+	
+	public void disminuirVelocidad() {
+		velocidadX -= 2;
+		velocidadY -= 1;
+		
+		velocidadX = Math.max(velocidadX, 2);
+		velocidadY = Math.max(velocidadY, 1);
+		
+		actualizarVelocidad();
 	}
 
 }

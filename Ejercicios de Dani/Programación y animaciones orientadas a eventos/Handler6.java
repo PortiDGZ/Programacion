@@ -3,8 +3,10 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 
 public class Handler6 implements EventHandler<ActionEvent> {
 
@@ -19,20 +21,39 @@ public class Handler6 implements EventHandler<ActionEvent> {
 	
 	// Tecla pulsada 1 = arriba, 2 = abajo
 	private int tecla;
+	
+	// Marcador
+	private Text marcador;
+	private int puntos;
+	private int maximo;
 
 	// Velocidad del rectángulo
 	private final static int VELOCIDAD = 10;
+	
+	// Sonido de puntuación
+	private AudioClip punto = new AudioClip(getClass().getResource("Shop.wav").toExternalForm());
+	
+	// Sonido de derrota
+	private AudioClip derrota = new AudioClip(getClass().getResource("Buzzer2.wav").toExternalForm());
 
 	// Constructor
-	public Handler6(Circle pelota, Scene escena, Polygon rectangulo) {
+	public Handler6(Circle pelota, Scene escena, Polygon rectangulo, Text marcador) {
 		this.pelota = pelota;
 		this.escena = escena;
 		this.rectangulo = rectangulo;
+		this.marcador = marcador;
 	}
 
 	// Handle
 	@Override
 	public void handle(ActionEvent arg0) {
+		// Colocar rectángulo
+		rectangulo.setTranslateX(escena.getWidth() / 2 - 50);
+		
+		// Colocar marcador
+		marcador.setTranslateX(170 - escena.getWidth() / 2);
+		marcador.setTranslateY(50 -escena.getHeight() / 2);
+		
 		// Movimiento del rectángulo
 		switch (tecla) {
 		case 1:
@@ -62,14 +83,27 @@ public class Handler6 implements EventHandler<ActionEvent> {
 			velocidadY = 2;
 		}
 
-		// Cambiar la velocidad cuando la pelota se encuentre con el rectángulo
+		// Cambiar la velocidad cuando la pelota se encuentre con el rectángulo y anotar un punto
 		if (choquePelota()) {
 			velocidadX = -4;
+			puntos++;
+			maximo = Math.max(maximo, puntos);
+			marcador.setText("Puntuación: " + puntos + "    Máximo: " + maximo);
+			punto.play();
 		}
 
 		// Movimiento de la pelota
 		pelota.setTranslateX(pelota.getTranslateX() + velocidadX);
 		pelota.setTranslateY(pelota.getTranslateY() + velocidadY);
+		
+		// Reiniciar partida
+		if(pelota.getTranslateX() >= ancho + 300) {
+			derrota.play();
+			pelota.setTranslateX(0);
+			pelota.setTranslateY(0);
+			puntos = 0;
+			marcador.setText("Puntuación: 0    Máximo: " + maximo);
+		}
 	}
 
 	private boolean choquePelota() {
